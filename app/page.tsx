@@ -1,65 +1,104 @@
-import Image from "next/image";
+import Link from "next/link";
 
-export default function Home() {
+/**
+ * Landing Page - SSG (Static Site Generation)
+ * This page is statically generated at build time
+ */
+export default function HomePage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-[calc(100vh-8rem)]">
+      {/* Hero Section */}
+      <section className="hero min-h-[60vh] bg-gradient-to-br from-primary/20 via-base-100 to-secondary/20">
+        <div className="hero-content text-center">
+          <div className="max-w-2xl">
+            <h1 className="text-5xl font-bold">
+              Build & Share <span className="text-primary">Agent Skills</span>
+            </h1>
+            <p className="py-6 text-lg opacity-80">
+              Create powerful AI agent skills using markdown. Share them
+              publicly or keep them private. Built with Next.js 16, Prisma, and
+              modern rendering strategies.
+            </p>
+            <div className="flex gap-4 justify-center">
+              <Link href="/skills" className="btn btn-primary btn-lg">
+                Browse Skills
+              </Link>
+              <Link href="/register" className="btn btn-outline btn-lg">
+                Get Started
+              </Link>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Rendering Strategies Demonstrated
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="card bg-base-200 shadow-xl">
+              <div className="card-body">
+                <h3 className="card-title text-primary">📄 SSG</h3>
+                <p>
+                  Static Site Generation. This landing page is built at compile
+                  time for maximum performance.
+                </p>
+                <div className="badge badge-outline">This Page</div>
+              </div>
+            </div>
+
+            <div className="card bg-base-200 shadow-xl">
+              <div className="card-body">
+                <h3 className="card-title text-secondary">🔄 ISR</h3>
+                <p>
+                  Incremental Static Regeneration. Skills gallery revalidates
+                  every 60 seconds for fresh content.
+                </p>
+                <div className="badge badge-outline">/skills</div>
+              </div>
+            </div>
+
+            <div className="card bg-base-200 shadow-xl">
+              <div className="card-body">
+                <h3 className="card-title text-accent">⚡ SSR</h3>
+                <p>
+                  Server-Side Rendering. Dashboard uses cookies for auth,
+                  rendering fresh data per request.
+                </p>
+                <div className="badge badge-outline">/dashboard</div>
+              </div>
+            </div>
+
+            <div className="card bg-base-200 shadow-xl">
+              <div className="card-body">
+                <h3 className="card-title text-warning">🎯 CSR</h3>
+                <p>
+                  Client-Side Rendering. Auth forms and skill editor use React
+                  state on the client.
+                </p>
+                <div className="badge badge-outline">/login, /new</div>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* Tech Stack Section */}
+      <section className="py-12 bg-base-200">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-2xl font-bold mb-8">Tech Stack</h2>
+          <div className="flex flex-wrap justify-center gap-4">
+            <div className="badge badge-lg badge-primary gap-2">Next.js 16</div>
+            <div className="badge badge-lg badge-secondary gap-2">React 19</div>
+            <div className="badge badge-lg badge-accent gap-2">Prisma 7</div>
+            <div className="badge badge-lg badge-info gap-2">PostgreSQL</div>
+            <div className="badge badge-lg badge-success gap-2">DaisyUI</div>
+            <div className="badge badge-lg gap-2">Tailwind CSS 4</div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

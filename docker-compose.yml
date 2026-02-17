@@ -1,0 +1,18 @@
+services:
+  skills-db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: skills_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - skills_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+volumes:
+  skills_pgdata:
